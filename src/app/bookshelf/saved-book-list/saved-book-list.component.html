@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <!-- <app-book *ngFor="let book of myBooks"></app-book> -->
+
+    <!-- SINGLE BOOK (TEMP) -->
+    <a class="book" href="#" *ngFor="let book of myBooks">
+      <!-- LEFT - Image -->
+      <div class="book-image">
+        <img
+          src="{{ book.coverImagePath }}"
+          alt="{{ book.title }} book cover"
+          class="img-responsive"
+        />
+      </div>
+
+      <!-- RIGHT - Info -->
+      <div class="book-info">
+        <h3>{{ book.title }}</h3>
+        <h4>{{ book.author }}</h4>
+      </div>
+    </a>
+  </div>
+</div>
