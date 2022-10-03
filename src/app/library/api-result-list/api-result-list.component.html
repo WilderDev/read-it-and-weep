@@ -1,1 +1,8 @@
-<p>api-result-list works!</p>
+<div class="row">
+  <div class="col-md-6">
+    <app-book
+      *ngFor="let apiBook of apiBooks"
+      [bookDetails]="apiBook"
+    ></app-book>
+  </div>
+</div>
