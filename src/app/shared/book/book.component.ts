@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+import { Book } from './book.model';
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  selector: "app-book",
+  templateUrl: "./book.component.html",
+  styleUrls: ["./book.component.css"]
 })
 export class BookComponent implements OnInit {
+  @Output() bookClickedEmitter = new EventEmitter<void>();
+  @Input() bookDetails: Book;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onClickBook() {
+    this.bookClickedEmitter.emit();
   }
-
 }

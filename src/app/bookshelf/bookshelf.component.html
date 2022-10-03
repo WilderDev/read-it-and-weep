@@ -2,11 +2,11 @@
   <!-- LIST -->
   <div class="col-md-6">
     <h1>My Books</h1>
-    <app-saved-book-list></app-saved-book-list>
+    <app-saved-book-list (newBookEmitter)="book = $event"></app-saved-book-list>
   </div>
 
   <!-- DETAILS -->
-  <div class="col-md-5 ms-auto">
-    <app-book-details></app-book-details>
+  <div class="col-md-5 ms-auto" *ngIf="book">
+    <app-book-details [bookDetails]="book"></app-book-details>
   </div>
 </div>

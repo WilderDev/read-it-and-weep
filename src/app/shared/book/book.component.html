@@ -1,1 +1,16 @@
-<p>book works!</p>
+<a class="book" href="#" (click)="onClickBook()">
+  <!-- LEFT - Image -->
+  <div class="book-image">
+    <img
+      src="{{ bookDetails.coverImagePath }}"
+      alt="{{ bookDetails.title }} book cover"
+      class="img-responsive"
+    />
+  </div>
+
+  <!-- RIGHT - Info -->
+  <div class="book-info">
+    <h3>{{ bookDetails.title }}</h3>
+    <h4>{{ bookDetails.author }}</h4>
+  </div>
+</a>
