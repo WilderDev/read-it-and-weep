@@ -8,5 +8,5 @@ type pageName = "BOOKSHELF" | "LIBRARY";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  currPageName: pageName = "BOOKSHELF";
+  currPageName: pageName = "LIBRARY";
 }
