@@ -1,9 +1,11 @@
 <div class="row">
-  <div class="col-md-12">
-    <app-book
-      *ngFor="let singleBook of myBooks"
-      [bookDetails]="singleBook"
-      (bookClickedEmitter)="onBookClicked(singleBook)"
-    ></app-book>
+  <div class="col-md-12 position-relative" *ngFor="let singleBook of myBooks">
+    <app-book [bookDetails]="singleBook"></app-book>
+    <button
+      class="btn action-btn remove-btn"
+      (click)="onRemoveBook(singleBook.id)"
+    >
+      &minus;
+    </button>
   </div>
 </div>

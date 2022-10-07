@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Book } from '../../shared/book/book.model';
+import { BookshelfService } from '../bookshelf.service';
 
 @Component({
   selector: "app-book-details",
@@ -8,9 +9,13 @@ import { Book } from '../../shared/book/book.model';
   styleUrls: ["./book-details.component.css"]
 })
 export class BookDetailsComponent implements OnInit {
-  @Input() bookDetails: Book;
+  book: Book;
 
-  constructor() {}
+  constructor(private bsService: BookshelfService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.bsService.bookSelected.subscribe((selectedBook: Book) => {
+      this.book = selectedBook;
+    });
+  }
 }

@@ -1,0 +1,10 @@
+.add-btn:hover,
+.add-btn:focus {
+  background-color: rgb(59, 182, 112);
+  color: #f1f1f1;
+}
+
+.hasInBookshelf {
+  background-color: #4f4fb9;
+  content: "💯";
+}

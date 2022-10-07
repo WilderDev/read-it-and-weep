@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BookshelfService } from '../../bookshelf/bookshelf.service';
 import { Book } from '../../shared/book/book.model';
+import { LibraryService } from '../library.service';
 
 @Component({
   selector: "app-api-result-list",
@@ -8,22 +10,26 @@ import { Book } from '../../shared/book/book.model';
   styleUrls: ["./api-result-list.component.css"]
 })
 export class ApiResultListComponent implements OnInit {
-  apiBooks: Book[] = [
-    new Book(
-      "123",
-      "Lost Souls?",
-      "Poppy Z. Brite",
-      "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1420793346i/452244.jpg"
-    ),
-    new Book(
-      "456",
-      "Of Mice & Men",
-      "John Steinbeck",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Of_Mice_and_Men_%281937_1st_ed_dust_jacket%29.jpg/220px-Of_Mice_and_Men_%281937_1st_ed_dust_jacket%29.jpg"
-    )
-  ];
+  apiBooks: Book[] = [];
 
-  constructor() {}
+  constructor(
+    private libraryService: LibraryService,
+    private bsService: BookshelfService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.apiBooks = this.libraryService.getAllBooks();
+    console.log("this.apiBooks:", this.apiBooks);
+    console.log("this.bsService.getAllBooks:", this.bsService.getAllBooks());
+  }
+
+  onSaveBook(book: Book) {
+    this.bsService.saveSingleBook(book);
+  }
+
+  checkIfInBookshelf(id: string) {
+    const foundBook = this.bsService.getSingleBook(id);
+
+    return foundBook ? true : false;
+  }
 }

@@ -1,0 +1,5 @@
+.remove-btn:hover,
+.remove-btn:focus {
+  background-color: rgb(182, 59, 59);
+  color: #f1f1f1;
+}

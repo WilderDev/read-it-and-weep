@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
+import { BookshelfService } from '../../bookshelf/bookshelf.service';
 import { Book } from './book.model';
 
 @Component({
@@ -8,14 +9,13 @@ import { Book } from './book.model';
   styleUrls: ["./book.component.css"]
 })
 export class BookComponent implements OnInit {
-  @Output() bookClickedEmitter = new EventEmitter<void>();
   @Input() bookDetails: Book;
 
-  constructor() {}
+  constructor(private bsService: BookshelfService) {}
 
   ngOnInit(): void {}
 
   onClickBook() {
-    this.bookClickedEmitter.emit();
+    this.bsService.bookSelected.emit(this.bookDetails);
   }
 }
