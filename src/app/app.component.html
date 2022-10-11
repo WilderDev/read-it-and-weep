@@ -1,15 +1,13 @@
 <main class="container">
   <!-- NAVBAR -->
   <header>
-    <app-navbar (newPageEmitter)="currPageName = $event"></app-navbar>
+    <app-navbar></app-navbar>
   </header>
 
   <!-- MAIN CONTENT -->
   <section class="row mt-4">
     <div class="col-md-10 mx-auto">
-      <app-bookshelf *ngIf="currPageName === 'BOOKSHELF'"></app-bookshelf>
-
-      <app-library *ngIf="currPageName === 'LIBRARY'"></app-library>
+      <router-outlet></router-outlet>
     </div>
   </section>
 </main>

@@ -26,13 +26,27 @@
   <div class="row">
     <div class="col-md-12">
       <div class="dropdown" appDropdown>
-        <button type="button" class="btn btn-primary dropdown-toggle">
+        <button
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          style="cursor: pointer"
+        >
           Edit Book
         </button>
 
         <div class="dropdown-menu">
-          <a class="dropdown-item">Update Book</a>
-          <a class="dropdown-item">Delete Book</a>
+          <a
+            class="dropdown-item"
+            (click)="openEditBook()"
+            style="cursor: pointer"
+            >Update Book</a
+          >
+          <a
+            class="dropdown-item"
+            (click)="onRemoveBook()"
+            style="cursor: pointer"
+            >Delete Book</a
+          >
         </div>
       </div>
     </div>

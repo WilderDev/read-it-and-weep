@@ -11,11 +11,7 @@ import { Book } from './book.model';
 export class BookComponent implements OnInit {
   @Input() bookDetails: Book;
 
-  constructor(private bsService: BookshelfService) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  onClickBook() {
-    this.bsService.bookSelected.emit(this.bookDetails);
-  }
 }

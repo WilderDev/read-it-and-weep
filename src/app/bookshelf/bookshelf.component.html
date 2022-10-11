@@ -1,12 +1,17 @@
 <div class="row">
   <!-- LIST -->
   <section class="col-xl-6">
-    <h1 class="mb-4">My Books</h1>
+    <div class="mb-4 header">
+      <h1>My Books</h1>
+      <button (click)="openBookForm()" class="btn btn-primary">
+        Create New Book
+      </button>
+    </div>
     <app-saved-book-list></app-saved-book-list>
   </section>
 
   <!-- DETAILS -->
   <div class="col-md-5 ms-auto">
-    <app-book-details></app-book-details>
+    <router-outlet></router-outlet>
   </div>
 </div>
