@@ -1,4 +1,6 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
+import { Injectable } from '@angular/core';
 
 import { Book } from '../shared/book/book.model';
 
@@ -6,9 +8,10 @@ import { Book } from '../shared/book/book.model';
   providedIn: "root"
 })
 export class BookshelfService {
-  // Emitters
-  bookSelected = new EventEmitter<Book>();
-  bookListChanged = new EventEmitter<Book[]>();
+  // Emitters/Subjects
+  bookSelected = new Subject<Book>();
+  bookListChanged = new Subject<Book[]>();
+  bookAddedEmitter = new Subject<Book>();
 
   // Data
   private bsServiceBooks: Book[] = [
@@ -37,11 +40,18 @@ export class BookshelfService {
     const { title, author, coverImagePath, id } = bookDetails;
     let randomId = id ?? Math.floor(Math.random() * 12 + 3);
 
-    this.bsServiceBooks.push(
-      new Book(title, author, coverImagePath, randomId.toString())
+    const bookToAdd = new Book(
+      title,
+      author,
+      coverImagePath,
+      randomId.toString()
     );
 
-    this.bookListChanged.emit(this.bsServiceBooks.slice());
+    this.bsServiceBooks.push(bookToAdd);
+
+    this.bookAddedEmitter.next(bookToAdd);
+
+    this.bookListChanged.next(this.bsServiceBooks.slice());
   }
 
   // READ
@@ -62,6 +72,6 @@ export class BookshelfService {
 
     this.bsServiceBooks = updatedBookArr;
 
-    this.bookListChanged.emit(this.bsServiceBooks.slice());
+    this.bookListChanged.next(this.bsServiceBooks.slice());
   }
 }

@@ -15,6 +15,7 @@ import { BookComponent } from './shared/book/book.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BookshelfFormComponent } from './bookshelf/bookshelf-form/bookshelf-form.component';
+import { NotificationModalComponent } from './shared/notification-modal/notification-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BookshelfFormComponent } from './bookshelf/bookshelf-form/bookshelf-for
     ApiResultListComponent,
     BookshelfHomeComponent,
     DropdownDirective,
-    BookshelfFormComponent
+    BookshelfFormComponent,
+    NotificationModalComponent
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule],
   providers: [],

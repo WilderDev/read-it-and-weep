@@ -1,0 +1,15 @@
+<section
+  *ngIf="bookData"
+  class="notification-modal"
+  (click)="this.bookData = null"
+>
+  <div class="overlay-bg"></div>
+
+  <div class="modal-content">
+    <div class="card">
+      <p>You Successfully Added</p>
+      <h3>{{ bookData.title }}</h3>
+      <h4>By {{ bookData.author }}</h4>
+    </div>
+  </div>
+</section>
