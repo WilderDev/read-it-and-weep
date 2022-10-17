@@ -1,1 +1,2 @@
-<p>{{ isEditMode ? "Editing a Book" : "Adding New Book" }}</p>
+<app-book-update *ngIf="isEditMode"></app-book-update>
+<app-book-create *ngIf="!isEditMode"></app-book-create>

@@ -16,6 +16,8 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BookshelfFormComponent } from './bookshelf/bookshelf-form/bookshelf-form.component';
 import { NotificationModalComponent } from './shared/notification-modal/notification-modal.component';
+import { BookUpdateComponent } from './bookshelf/bookshelf-form/book-update/book-update.component';
+import { BookCreateComponent } from './bookshelf/bookshelf-form/book-create/book-create.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { NotificationModalComponent } from './shared/notification-modal/notifica
     BookshelfHomeComponent,
     DropdownDirective,
     BookshelfFormComponent,
-    NotificationModalComponent
+    NotificationModalComponent,
+    BookUpdateComponent,
+    BookCreateComponent
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule],
   providers: [],
