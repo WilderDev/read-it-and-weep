@@ -1,13 +1,79 @@
-<form>
+<form (ngSubmit)="onCreateBook(bookCreateFormRef)" #bookCreateFormRef="ngForm">
   <!-- TITLE -->
-  <div class="form-group"></div>
+  <div class="form-group mb-3">
+    <label for="title">Title</label>
+    <input
+      class="form-control"
+      type="text"
+      name="title"
+      id="title"
+      #titleRef="ngModel"
+      ngModel
+      required
+    />
+
+    <span
+      *ngIf="!titleRef.valid && titleRef.touched"
+      class="help-block text-danger"
+      >Please Enter a valid title</span
+    >
+  </div>
 
   <!-- AUTHOR -->
-  <div class="form-group"></div>
+  <div class="form-group mb-3">
+    <label for="author">Author</label>
+    <input
+      class="form-control"
+      type="text"
+      name="author"
+      id="author"
+      #authorRef="ngModel"
+      ngModel
+      required
+    />
+
+    <span
+      *ngIf="!authorRef.valid && authorRef.touched"
+      class="help-block text-danger"
+      >Please Enter a valid author</span
+    >
+  </div>
 
   <!-- COVER IMAGE PATH -->
-  <div class="form-group"></div>
+  <div class="form-group mb-3">
+    <label for="coverImagePath">Cover Image Path</label>
+    <input
+      class="form-control"
+      type="text"
+      name="coverImagePath"
+      id="coverImagePath"
+      #imageRef="ngModel"
+      ngModel
+      required
+    />
+
+    <span
+      *ngIf="!imageRef.valid && imageRef.touched"
+      class="help-block text-danger"
+      >Please Enter a valid image path</span
+    >
+  </div>
+
+  <!-- CLEAR -->
+  <button
+    (click)="onReset(bookCreateFormRef)"
+    class="btn btn-secondary me-2"
+    type="button"
+  >
+    Cancel
+  </button>
 
   <!-- SUBMIT -->
-  <button class="btn btn-primary">Create</button>
+  <button
+    [disabled]="!bookCreateFormRef.valid"
+    class="btn btn-primary"
+    type="submit"
+  >
+    Create
+  </button>
 </form>

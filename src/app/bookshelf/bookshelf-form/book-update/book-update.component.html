@@ -1,13 +1,72 @@
-<form>
+<form (ngSubmit)="onUpdateBook()" [formGroup]="bookDetails">
   <!-- TITLE -->
-  <div class="form-group"></div>
+  <div class="form-group mb-3">
+    <label for="title">Title</label>
+    <input
+      class="form-control"
+      type="text"
+      name="title"
+      id="title"
+      formControlName="title"
+    />
+
+    <span
+      *ngIf="
+        !bookDetails.get('title').valid && bookDetails.get('title').touched
+      "
+      class="help-block text-danger"
+      >Please enter a valid title.</span
+    >
+  </div>
 
   <!-- AUTHOR -->
-  <div class="form-group"></div>
+  <div class="form-group mb-3">
+    <label for="author">Author</label>
+    <input
+      class="form-control"
+      type="text"
+      name="author"
+      id="author"
+      formControlName="author"
+    />
+
+    <span
+      *ngIf="
+        !bookDetails.get('author').valid && bookDetails.get('author').touched
+      "
+      class="help-block text-danger"
+      >Please enter a valid author.</span
+    >
+  </div>
 
   <!-- COVER IMAGE PATH -->
-  <div class="form-group"></div>
+  <div class="form-group mb-3">
+    <label for="coverImagePath">Cover Image Path</label>
+    <input
+      class="form-control"
+      type="text"
+      name="coverImagePath"
+      id="coverImagePath"
+      formControlName="coverImagePath"
+    />
+
+    <span
+      *ngIf="
+        !bookDetails.get('coverImagePath').valid &&
+        bookDetails.get('coverImagePath').touched
+      "
+      class="help-block text-danger"
+      >Please enter a valid cover image path.</span
+    >
+  </div>
+
+  <!-- CLEAR -->
+  <button (click)="onReset()" class="btn btn-secondary me-2" type="button">
+    Cancel
+  </button>
 
   <!-- SUBMIT -->
-  <button class="btn btn-primary">Update</button>
+  <button [disabled]="!bookDetails.valid" class="btn btn-primary" type="submit">
+    Update
+  </button>
 </form>

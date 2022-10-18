@@ -59,12 +59,22 @@ export class BookshelfService {
     return this.bsServiceBooks.slice(); // Returns copy of myBooks array
   }
   getSingleBook(id: string) {
-    const book = this.bsServiceBooks.slice().filter(b => b.id === id)[0];
+    const book = this.bsServiceBooks.slice().find(book => book.id === id);
     return book;
   }
 
   // UPDATE
-  updateSingleBook(id, bookDetails) {}
+  updateSingleBook(id: string, bookDetails: Partial<Book>) {
+    this.bsServiceBooks = this.bsServiceBooks.map(book => {
+      if (book.id === id) {
+        return { ...book, ...bookDetails };
+      } else {
+        return book;
+      }
+    });
+
+    this.bookListChanged.next(this.bsServiceBooks);
+  }
 
   // DELETE
   deleteSingleBook(id: string) {
