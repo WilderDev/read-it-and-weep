@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Book } from '../../shared/book/book.model';
 import { BookshelfService } from '../bookshelf.service';
@@ -9,6 +9,8 @@ import { BookshelfService } from '../bookshelf.service';
   styleUrls: ["./saved-book-list.component.css"]
 })
 export class SavedBookListComponent implements OnInit {
+  @Input() sort: "title" | "author";
+
   myBooks: Book[] = [];
 
   constructor(private bsService: BookshelfService) {}

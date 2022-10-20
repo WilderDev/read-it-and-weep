@@ -3,11 +3,15 @@
   <section class="col-xl-6">
     <div class="mb-4 header">
       <h1>My Books</h1>
+      <button (click)="onSort()" class="btn btn-secondary">
+        Sort By {{ sortBy === "title" ? "Author" : "Title" }}
+      </button>
       <button (click)="openBookForm()" class="btn btn-primary">
-        Create New Book
+        Create Book
       </button>
     </div>
-    <app-saved-book-list></app-saved-book-list>
+
+    <app-saved-book-list [sort]="sortBy"></app-saved-book-list>
   </section>
 
   <!-- DETAILS -->

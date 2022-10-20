@@ -20,6 +20,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import {
     NotificationModalComponent
 } from './shared/notification-modal/notification-modal.component';
+import { SortArrayPipe } from './shared/pipes/arraySort.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {
     BookshelfFormComponent,
     NotificationModalComponent,
     BookUpdateComponent,
-    BookCreateComponent
+    BookCreateComponent,
+    SortArrayPipe
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
