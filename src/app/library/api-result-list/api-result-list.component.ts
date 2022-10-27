@@ -18,9 +18,9 @@ export class ApiResultListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.apiBooks = this.libraryService.getAllBooks();
-    console.log("this.apiBooks:", this.apiBooks);
-    console.log("this.bsService.getAllBooks:", this.bsService.getAllBooks());
+    this.libraryService.apiBooksChanged.subscribe((books: Book[]) => {
+      this.apiBooks = books;
+    });
   }
 
   onSaveBook(book: Book) {
@@ -28,6 +28,8 @@ export class ApiResultListComponent implements OnInit {
   }
 
   checkIfInBookshelf(id: string) {
+    // TODO: Check if this still works
+
     const foundBook = this.bsService.getSingleBook(id);
 
     return foundBook ? true : false;

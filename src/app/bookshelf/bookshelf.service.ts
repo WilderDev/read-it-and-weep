@@ -1,7 +1,9 @@
 import { Subject } from 'rxjs';
+import { objectToArray } from 'src/utils/objectToArray';
 
 import { Injectable } from '@angular/core';
 
+import { FirebaseService } from '../shared/api/firebaseService';
 import { Book } from '../shared/book/book.model';
 
 @Injectable({
@@ -16,7 +18,7 @@ export class BookshelfService {
   // Data
   private bsServiceBooks: Book[] = [];
 
-  constructor() {}
+  constructor() {} // TODO: Inject FirebaseService
 
   // Create Single Book
   createSingleBook(book: Book) {
@@ -38,25 +40,26 @@ export class BookshelfService {
   }
 
   // Save Single Book to Firebase
-  saveSingleBook(bookDetails: Partial<Book>) {
-    const { title, author, coverImagePath } = bookDetails;
-
-    // TODO
+  saveSingleBook(bookDetails: Book) {
+    // TODO: Save to Firebase
   }
 
   // Get Books from Firebase
   getBooksFromFirebase() {
-    // TODO
+    // TODO: Get Books to Firebase & Transform to Book[]
   }
 
   // Get All Books
   getAllBooks() {
+    // TODO: Launch the getBooksFromFirebase() method
+
     return this.bsServiceBooks.slice(); // Returns copy of myBooks array
   }
 
   // Get Single Book
   getSingleBook(id: string) {
     const book = this.bsServiceBooks.slice().find(book => book.id === id);
+
     return book;
   }
 
@@ -75,9 +78,9 @@ export class BookshelfService {
 
   // Delete Single Book
   deleteSingleBook(id: string) {
-    const updatedBookArr = this.bsServiceBooks.filter(book => book.id !== id);
+    // TODO: Delete from Firebase
 
-    this.bsServiceBooks = updatedBookArr;
+    this.bsServiceBooks = this.bsServiceBooks.filter(b => b.id !== id);
 
     this.bookListChanged.next(this.bsServiceBooks.slice());
   }

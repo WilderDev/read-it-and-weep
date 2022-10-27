@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -41,7 +42,13 @@ import { SortArrayPipe } from './shared/pipes/arraySort.pipe';
     BookCreateComponent,
     SortArrayPipe
   ],
-  imports: [AppRoutingModule, BrowserModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
