@@ -18,9 +18,9 @@ export class BookshelfService {
 
   constructor() {}
 
-  // CREATE
-  saveSingleBook(bookDetails: Book) {
-    const { title, author, coverImagePath, id } = bookDetails;
+  // Create Single Book
+  createSingleBook(book: Book) {
+    const { title, author, coverImagePath, id } = book;
     let randomId = id ?? Math.floor(Math.random() * 12 + 3);
 
     const bookToAdd = new Book(
@@ -37,16 +37,30 @@ export class BookshelfService {
     this.bookListChanged.next(this.bsServiceBooks.slice());
   }
 
-  // READ
+  // Save Single Book to Firebase
+  saveSingleBook(bookDetails: Partial<Book>) {
+    const { title, author, coverImagePath } = bookDetails;
+
+    // TODO
+  }
+
+  // Get Books from Firebase
+  getBooksFromFirebase() {
+    // TODO
+  }
+
+  // Get All Books
   getAllBooks() {
     return this.bsServiceBooks.slice(); // Returns copy of myBooks array
   }
+
+  // Get Single Book
   getSingleBook(id: string) {
     const book = this.bsServiceBooks.slice().find(book => book.id === id);
     return book;
   }
 
-  // UPDATE
+  // Update Single Book
   updateSingleBook(id: string, bookDetails: Partial<Book>) {
     this.bsServiceBooks = this.bsServiceBooks.map(book => {
       if (book.id === id) {
@@ -59,7 +73,7 @@ export class BookshelfService {
     this.bookListChanged.next(this.bsServiceBooks);
   }
 
-  // DELETE
+  // Delete Single Book
   deleteSingleBook(id: string) {
     const updatedBookArr = this.bsServiceBooks.filter(book => book.id !== id);
 
