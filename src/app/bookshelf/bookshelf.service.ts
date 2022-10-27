@@ -14,26 +14,9 @@ export class BookshelfService {
   bookAddedEmitter = new Subject<Book>();
 
   // Data
-  private bsServiceBooks: Book[] = [
-    new Book(
-      "Howl's Moving Castle",
-      "Diana Wynne Jones",
-      "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Howl%27s_Moving_Castle_%28Book_Cover%29.jpg/220px-Howl%27s_Moving_Castle_%28Book_Cover%29.jpg",
-      "sdfklajvj23klj"
-    ),
-    new Book(
-      "Brian's Hunt",
-      "Gary Paulsen",
-      "https://upload.wikimedia.org/wikipedia/en/thumb/a/a8/Paulsen_-_Brian%27s_Hunt_Coverart.jpg/220px-Paulsen_-_Brian%27s_Hunt_Coverart.jpg",
-      "324j32kljfkdsf"
-    ),
-    new Book(
-      "Fight Club",
-      "Chuck Palahniuk",
-      "https://upload.wikimedia.org/wikipedia/en/thumb/c/ce/Fightclubcvr.jpg/200px-Fightclubcvr.jpg",
-      "kl3jlkjfksjfsd"
-    )
-  ];
+  private bsServiceBooks: Book[] = [];
+
+  constructor() {}
 
   // CREATE
   saveSingleBook(bookDetails: Book) {
