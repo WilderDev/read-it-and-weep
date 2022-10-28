@@ -9,14 +9,20 @@ import { Book } from '../book/book.model';
   providedIn: "root"
 })
 export class FirebaseService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   // Fetch Books from Firebase
-  fetchBooksFromFirebase() {}
+  fetchBooksFromFirebase() {
+    return this.http.get(FIREBASE_BOOKS + ".json");
+  }
 
   // Save Single Book to Firebase
-  saveBooktoFirebase(bookDetails: Book) {}
+  saveBooktoFirebase(bookDetails: Book) {
+    this.http.post(FIREBASE_BOOKS + ".json", bookDetails).subscribe();
+  }
 
   // Delete Single Book from Firebase
-  deleteBookFromFirebase(bookId: string) {}
+  deleteBookFromFirebase(bookId: string) {
+    this.http.delete(FIREBASE_BOOKS + "/" + bookId + ".json").subscribe();
+  }
 }

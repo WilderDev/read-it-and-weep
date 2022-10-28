@@ -1,5 +1,5 @@
 import { FirebaseService } from 'src/app/shared/api/firebaseService';
-import { GoogleBookService } from 'src/app/shared/api/googleBooks';
+import { GoogleBookService } from 'src/app/shared/api/googleBooks.service';
 import { transformToQuery } from 'src/utils/transformToQuery';
 
 import { Component, OnInit } from '@angular/core';
@@ -10,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ["./book-search-bar.component.css"]
 })
 export class BookSearchBarComponent implements OnInit {
-  // TODO: Inject Google Books Service
-  constructor() {}
+  constructor(private googleAPI: GoogleBookService) {}
 
   ngOnInit(): void {}
 
-  // TODO: Implement searchBook() method -> Format Query & Call Google Books API
+  onSearchBooks(query: string) {
+    const transformedQuery = query // query = " The Lord of the RinGS  "
+      .toLowerCase() // query = " the lord of the rings   "
+      .trim() // query = "the lord of the rings"
+      .split(" ") // query = ["the", "lord", "of", "the", "rings"]
+      .join("+"); // query = "the+lord+of+the+rings"
+
+    this.googleAPI.searchBooksFromGoogle(transformedQuery);
+  }
 }

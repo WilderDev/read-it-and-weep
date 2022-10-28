@@ -2,16 +2,16 @@
   <div class="col-md-6 position-relative" *ngFor="let apiBook of apiBooks">
     <app-book [bookDetails]="apiBook"></app-book>
 
-    <div *ngIf="checkIfInBookshelf(apiBook.id) === false">
+    <div *ngIf="!checkIfInBookshelf(apiBook.title)">
       <button class="btn action-btn add-btn" (click)="onSaveBook(apiBook)">
         ➕
       </button>
     </div>
 
-    <div *ngIf="checkIfInBookshelf(apiBook.id) === true">
+    <div *ngIf="checkIfInBookshelf(apiBook.title)">
       <button
         class="btn action-btn add-btn hasInBookshelf"
-        (click)="bsService.deleteSingleBook(apiBook.id)"
+        (click)="bsService.deleteSingleBookByTitle(apiBook.title)"
       >
         ✅
       </button>

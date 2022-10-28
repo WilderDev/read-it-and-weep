@@ -27,10 +27,8 @@ export class ApiResultListComponent implements OnInit {
     this.bsService.saveSingleBook(book);
   }
 
-  checkIfInBookshelf(id: string) {
-    // TODO: Check if this still works
-
-    const foundBook = this.bsService.getSingleBook(id);
+  checkIfInBookshelf(title: string) {
+    const foundBook = this.bsService.getBookByTitle(title);
 
     return foundBook ? true : false;
   }

@@ -2,14 +2,19 @@
   <div class="col-md-10">
     <h1>Search for Books on the Internetz</h1>
   </div>
-  <!-- Configure Template Based Form -->
-  <form class="col-md-2">
+
+  <form
+    class="col-md-2"
+    #searchForm="ngForm"
+    (ngSubmit)="onSearchBooks(searchForm.value.search)"
+  >
     <input
       type="text"
       name="search"
       id="search"
       placeholder="Search for a book . . ."
       class="book-search-input"
+      [(ngModel)]="searchForm.value.search"
       required
     />
   </form>

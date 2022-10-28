@@ -21,7 +21,7 @@ export class BookCreateComponent implements OnInit {
   onCreateBook(formObj: NgForm) {
     const { title, author, coverImagePath } = formObj.value;
 
-    this.bsService.createSingleBook({ title, author, coverImagePath });
+    this.bsService.saveSingleBook({ title, author, coverImagePath });
 
     this.onReset(formObj);
   }
