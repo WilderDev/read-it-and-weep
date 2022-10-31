@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-xs-12 col-md-6 offset-md-3">
+    <!-- FORM -->
+    <form #authForm="ngForm" (ngSubmit)="onAuth(authForm)">
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          class="form-control"
+          type="email"
+          id="email"
+          name="email"
+          ngModel
+          required
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          class="form-control"
+          type="password"
+          id="password"
+          name="password"
+          minlength="6"
+          ngModel
+          required
+        />
+      </div>
+
+      <!-- Actions -->
+      <div>
+        <!-- Submit -->
+        <!-- TODO -->
+        <button class="btn btn-primary" type="submit">Sign __</button>
+
+        <!-- Change Mode -->
+        <!-- TODO -->
+        <p>Change ___</p>
+      </div>
+    </form>
+  </div>
+</div>

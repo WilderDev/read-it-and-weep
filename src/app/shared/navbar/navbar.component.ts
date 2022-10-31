@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   isCollapsed = false;
   isAuth = false;
 
@@ -13,5 +13,9 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO: Subscribe to Auth User to see if user is logged in
+  }
+
+  ngOnDestroy(): void {
+    // TODO: Destroy Subscription
   }
 }
