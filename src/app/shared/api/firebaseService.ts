@@ -1,8 +1,7 @@
-import { FIREBASE_BOOKS } from 'src/constants/firebase';
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { environment } from '../../../environments/environment';
 import { Book } from '../book/book.model';
 
 @Injectable({
@@ -13,16 +12,20 @@ export class FirebaseService {
 
   // Fetch Books from Firebase
   fetchBooksFromFirebase() {
-    return this.http.get(FIREBASE_BOOKS + ".json");
+    return this.http.get(environment.firebase.dbBooks + ".json");
   }
 
   // Save Single Book to Firebase
   saveBooktoFirebase(bookDetails: Book) {
-    this.http.post(FIREBASE_BOOKS + ".json", bookDetails).subscribe();
+    this.http
+      .post(environment.firebase.dbBooks + ".json", bookDetails)
+      .subscribe();
   }
 
   // Delete Single Book from Firebase
   deleteBookFromFirebase(bookId: string) {
-    this.http.delete(FIREBASE_BOOKS + "/" + bookId + ".json").subscribe();
+    this.http
+      .delete(environment.firebase.dbBooks + "/" + bookId + ".json")
+      .subscribe();
   }
 }
