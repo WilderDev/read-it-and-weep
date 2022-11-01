@@ -1,15 +1,22 @@
+import { map, take } from 'rxjs';
+
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
+
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: "root"
 })
 export class AuthGuard implements CanActivate {
-  constructor() {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   canActivate() {
-    return true;
+    return this.auth.user.pipe(
+      take(1),
+      map(user => {
+        return !!user ? true : this.router.createUrlTree(["auth"]);
+      })
+    );
   }
 }
-
-// TODO:  Check if the !!user is authenticated. If so, return true. If not, return router.createUrlTree(['auth']).

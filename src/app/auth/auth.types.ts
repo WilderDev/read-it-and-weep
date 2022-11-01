@@ -5,5 +5,6 @@ export interface AuthRes {
   refreshToken: string;
   expiresIn: string;
   localId: string;
+  displayName?: string;
   registered?: boolean;
 }

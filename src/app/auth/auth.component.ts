@@ -1,5 +1,11 @@
+import { Observable } from 'rxjs';
+
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { AuthService } from './auth.service';
+import { AuthRes } from './auth.types';
 
 type authMode = "LOGIN" | "REGISTER";
 
@@ -11,7 +17,9 @@ type authMode = "LOGIN" | "REGISTER";
 export class AuthComponent implements OnInit {
   mode: authMode = "LOGIN"; // Switch between Login and Register Modes
 
-  constructor() {}
+  authObservable: Observable<AuthRes>;
+
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -21,9 +29,18 @@ export class AuthComponent implements OnInit {
 
     const { email, password } = form.value; // Destructure the form values / user input
 
-    console.log(this.mode, email, password); // Log the form values / user input
+    if (this.mode === "REGISTER") {
+      // Register the user
+      this.authObservable = this.auth.signUp(email, password);
+    } else {
+      // Login the user
+      this.authObservable = this.auth.signIn(email, password);
+    }
 
-    // TODO: Send to server
+    this.authObservable.subscribe({
+      next: () => this.router.navigate(["bookshelf"]),
+      error: error => alert(error.message)
+    });
 
     form.reset(); // Reset the form
   }

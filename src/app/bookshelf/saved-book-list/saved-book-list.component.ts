@@ -21,8 +21,6 @@ export class SavedBookListComponent implements OnInit {
     this.bsService.bookListChanged.subscribe((updatedBookList: Book[]) => {
       this.myBooks = updatedBookList;
     });
-
-    console.log("this.myBooks:", this.myBooks);
   }
 
   onRemoveBook(id: string) {

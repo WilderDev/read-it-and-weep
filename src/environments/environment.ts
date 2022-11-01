@@ -7,8 +7,7 @@ export const environment = {
     dbRootUrl: "https://cape-books-evening-default-rtdb.firebaseio.com",
     dbBooks: "https://cape-books-evening-default-rtdb.firebaseio.com/books",
     authRootUrl: "https://identitytoolkit.googleapis.com/v1/accounts:",
-    authSignUp:
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=",
+    authSignUp: `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=`,
     authSignIn:
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key="
   },

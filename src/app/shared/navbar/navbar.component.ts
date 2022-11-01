@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
+import { AuthService } from '../../auth/auth.service';
+
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -9,10 +11,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isCollapsed = false;
   isAuth = false;
 
-  constructor() {}
+  constructor(public auth: AuthService) {}
 
   ngOnInit(): void {
-    // TODO: Subscribe to Auth User to see if user is logged in
+    this.auth.user.subscribe(user => {
+      this.isAuth = !!user; // !! -> Bang Bang -> Boolean
+    });
   }
 
   ngOnDestroy(): void {

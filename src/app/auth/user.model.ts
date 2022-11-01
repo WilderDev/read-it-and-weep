@@ -8,7 +8,8 @@ export class User {
 
   public get token() {
     // Ensure you have a token && the expiration date is not in the past
-    // TODO
+    if (!this._tokenExpirationDate || new Date() > this._tokenExpirationDate)
+      return null;
 
     // Send the user's token
     return this._token;

@@ -16,7 +16,7 @@
       </div>
 
       <!-- Password -->
-      <div class="form-group">
+      <div class="form-group mt-2">
         <label for="password">Password</label>
         <input
           class="form-control"
@@ -30,14 +30,24 @@
       </div>
 
       <!-- Actions -->
-      <div>
+      <div class="mt-3">
         <!-- Submit -->
-        <!-- TODO -->
-        <button class="btn btn-primary" type="submit">Sign __</button>
+        <button class="btn btn-primary" type="submit">
+          Sign {{ mode === "LOGIN" ? "In" : "Up" }}
+        </button>
 
         <!-- Change Mode -->
-        <!-- TODO -->
-        <p>Change ___</p>
+        <button
+          (click)="mode === 'LOGIN' ? (mode = 'REGISTER') : (mode = 'LOGIN')"
+          class="btn btn-link"
+          type="button"
+        >
+          {{
+            mode === "LOGIN"
+              ? "Not a member yet? Register now."
+              : "Already a user? Sign in here."
+          }}
+        </button>
       </div>
     </form>
   </div>

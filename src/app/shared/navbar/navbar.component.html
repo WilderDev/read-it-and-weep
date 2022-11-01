@@ -24,26 +24,25 @@
       [class.show]="isCollapsed"
     >
       <ul class="navbar-nav w-100">
-        <!-- TODO: Show List Items Based on Authentication Status -->
-        <li class="nav-item me-2">
-          <a
-            class="nav-link"
-            aria-current="page"
-            routerLink="/bookshelf"
-            routerLinkActive="active"
+        <li class="nav-item me-2" *ngIf="isAuth">
+          <a class="nav-link" routerLink="/bookshelf" routerLinkActive="active"
             >Bookshelf</a
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isAuth">
           <a class="nav-link" routerLink="/library" routerLinkActive="active"
             >Library</a
           >
         </li>
-        <li class="nav-item">
-          <!-- TODO: Log User Out on Click -->
-          <span class="nav-link" style="cursor: pointer;">Sign Out</span>
+        <li class="nav-item" *ngIf="isAuth">
+          <span
+            (click)="auth.signOut()"
+            class="nav-link"
+            style="cursor: pointer;"
+            >Sign Out</span
+          >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!isAuth">
           <a class="nav-link" routerLink="/auth" routerLinkActive="active"
             >Auth</a
           >
