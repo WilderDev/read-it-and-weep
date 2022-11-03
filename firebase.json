@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "dist/read-it-and-weep",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
