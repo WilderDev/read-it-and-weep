@@ -9,7 +9,7 @@ import { AuthRes } from './auth.types';
 import { User } from './user.model';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class AuthService {
   user = new BehaviorSubject<User | null>(null); // Subscribable User
@@ -26,11 +26,11 @@ export class AuthService {
         {
           email,
           password,
-          returnSecureToken: true
+          returnSecureToken: true,
         }
       )
       .pipe(
-        tap(res =>
+        tap((res) =>
           this.authHandler(res.email, res.localId, res.idToken, +res.expiresIn)
         )
       );
@@ -41,7 +41,7 @@ export class AuthService {
     const requestBody = {
       email: inputEmail,
       password: inputPassword,
-      returnSecureToken: true
+      returnSecureToken: true,
     };
 
     return this.http
@@ -50,7 +50,7 @@ export class AuthService {
         requestBody
       )
       .pipe(
-        tap(res =>
+        tap((res) =>
           this.authHandler(res.email, res.localId, res.idToken, +res.expiresIn)
         )
       );
@@ -62,18 +62,18 @@ export class AuthService {
     this.user.next(null);
 
     // Remove the User Instance from localStorage
-    localStorage.removeItem("riaw_user");
+    localStorage.removeItem('riaw_user');
 
     // Reset Token Expiration Timer
     if (this.expTimer) clearTimeout(this.expTimer);
 
     // Navigate to the root auth page of the app
-    this.router.navigate(["auth"]);
+    this.router.navigate(['auth']);
   }
 
   // Auto sign in
   autoSignIn() {
-    const lsUser = JSON.parse(localStorage.getItem("riaw_user"));
+    const lsUser = JSON.parse(localStorage.getItem('riaw_user'));
 
     if (!lsUser) return;
 
@@ -87,6 +87,8 @@ export class AuthService {
       new Date(_tokenExpirationDate).getTime() - new Date().getTime();
 
     this.autoSignOut(expirationDate);
+
+    this.router.navigate(['bookshelf']);
   }
 
   // Auto sign out
@@ -116,6 +118,6 @@ export class AuthService {
     this.autoSignOut(expiresIn * 1000);
 
     // Save the stringified User Instance to localStorage
-    localStorage.setItem("riaw_user", JSON.stringify(authUser));
+    localStorage.setItem('riaw_user', JSON.stringify(authUser));
   }
 }

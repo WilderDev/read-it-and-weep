@@ -7,7 +7,7 @@ import { environment } from '../../../environments/environment';
 import { Book } from '../book/book.model';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class GoogleBookService {
   constructor(
@@ -21,11 +21,11 @@ export class GoogleBookService {
       .get(environment.google.searchUrl + query)
       .subscribe((googleResponse: any) => {
         // turn the data into something our code/project understands
-        const updatedBooks = googleResponse.items.slice(0, 6).map(item => {
+        const updatedBooks = googleResponse?.items?.slice(0, 6)?.map((item) => {
           const book = new Book(
-            item.volumeInfo.title || "unknown",
-            item.volumeInfo.authors[0] || "unknown",
-            item.volumeInfo.imageLinks.thumbnail || "unknown"
+            item?.volumeInfo?.title || 'unknown',
+            item?.volumeInfo?.authors[0] || 'unknown',
+            item?.volumeInfo?.imageLinks?.thumbnail || 'unknown'
           );
 
           return book;
